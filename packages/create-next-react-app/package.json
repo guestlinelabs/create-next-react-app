@@ -1,0 +1,22 @@
+{
+  "name": "create-next-react-app",
+  "version": "1.0.0",
+  "repository": "guestlinelabs/create-next-react-app",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6"
+  },
+  "bugs": {
+    "url": "https://github.com/guestlinelabs/create-next-react-app/issues"
+  },
+  "files": ["bin", "utils"],
+  "bin": {
+    "create-next-react-app": "./bin/scripts.js"
+  },
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "ncp": "^2.0.0"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}
