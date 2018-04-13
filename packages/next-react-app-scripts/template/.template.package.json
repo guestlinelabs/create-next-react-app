@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "test": "jest-run --env=jsdom",
+    "build": "next-react-app-scripts build",
+    "start": "next-react-app-scripts start",
+    "prod": "cross-env NODE_ENV=production next-react-app-scripts start"
+  },
+  "target": {
+    "node": "8.9.4",
+    "browsers": [">1%", "last 4 versions", "Firefox ESR", "not ie < 11"]
+  },
+  "dependencies": {
+    "cross-env": "^5.1.4",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.4.3",
+    "jest-run": "^1.0.0"
+  }
+}
