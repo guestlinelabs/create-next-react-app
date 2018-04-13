@@ -1,5 +1,8 @@
-const path = require('path');
-require('dotenv').config({ silent: true, path: './.env' });
+const paths = require('./utils/paths');
+require('dotenv').config({ silent: true, path: paths.dotenv });
+
+const packageJSON = require(paths.packageJSON);
+const templatePackageJSON = require('./template/.template.package.json');
 
 const { PUBLIC_URL, NEXT_BUILD_ID } = process.env;
 
@@ -15,20 +18,11 @@ const envVars = Object.keys(process.env)
     acc[`process.env.${key}`] = process.env[key];
     return acc;
   }, {});
-
 envVars['process.env.ASSET_PREFIX'] = process.env.ASSET_PREFIX;
 
 module.exports = {
   presets: [
-    [
-      'env',
-      {
-        targets: {
-          node: '8.9.4',
-          browsers: ['last 2 versions', 'ie 11']
-        }
-      }
-    ],
+    ['env', { targets: packageJSON.targets || templatePackageJSON.targets }],
     ['next/babel']
   ],
   plugins: [

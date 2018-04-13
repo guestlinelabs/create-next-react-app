@@ -1,5 +1,15 @@
 {
-	"devDependencies": {
-		"lerna": "^2.10.1"
-	}
+  "scripts": {
+    "precommit": "lint-staged"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lerna": "^2.10.1",
+    "lint-staged": "^7.0.4",
+    "prettier": "^1.11.1",
+    "prettier-config-guestline": "^1.0.0"
+  },
+  "lint-staged": {
+    "{packages}/**/*.{js,jsx,json,ts,css,scss,sass,less,md}": ["prettier --write", "git add"]
+  }
 }
