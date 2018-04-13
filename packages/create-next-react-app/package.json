@@ -1,0 +1,14 @@
+{
+  "name": "create-next-react-app",
+  "version": "1.0.0",
+  "repository": "guestlinelabs/create-next-react-app",
+  "description": "Create Next React apps with no build configuration.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=6"
+  },
+  "bugs": {
+    "url": "https://github.com/guestlinelabs/create-next-react-app/issues"
+  },
+  "dependencies": {}
+}
