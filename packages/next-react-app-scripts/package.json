@@ -1,6 +1,6 @@
 {
   "name": "next-react-app-scripts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "guestlinelabs/create-next-react-app",
   "description": "Configuration and scripts for Create Next React App.",
   "license": "MIT",
@@ -10,13 +10,7 @@
   "bugs": {
     "url": "https://github.com/guestlinelabs/create-next-react-app/issues"
   },
-  "files": [
-    "bin",
-    "jest",
-    "next",
-    "scripts",
-    "utils"
-  ],
+  "files": ["bin", "scripts", "template", "utils", "babel.js", "config.js"],
   "bin": {
     "next-react-app-scripts": "./bin/scripts.js"
   },
