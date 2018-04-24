@@ -10,7 +10,14 @@
   "bugs": {
     "url": "https://github.com/guestlinelabs/create-next-react-app/issues"
   },
-  "files": ["bin", "scripts", "template", "utils", "babel.js", "config.js"],
+  "files": [
+    "bin",
+    "scripts",
+    "template",
+    "utils",
+    "babel.js",
+    "config.js"
+  ],
   "bin": {
     "next-react-app-scripts": "./bin/scripts.js"
   },
@@ -20,6 +27,7 @@
     "babel-plugin-transform-assets-import-to-string": "^1.1.0",
     "babel-plugin-transform-define": "^1.3.0",
     "babel-preset-env": "^1.6.1",
+    "camelcase": "^5.0.0",
     "cross-spawn": "^6.0.5",
     "dotenv": "^5.0.1",
     "eslint": "^4.1.1",
