@@ -29,6 +29,7 @@ module.exports = {
     [
       'transform-assets-import-to-string',
       {
+        extensions: ['.gif', '.jpeg', '.jpg', '.png', '.svg', '.ttf', '.woff', '.woff2', '.eot'],
         baseDir: '/static',
         baseUri: process.env.ASSET_PREFIX === '/_next' ? '' : process.env.ASSET_PREFIX
       }
