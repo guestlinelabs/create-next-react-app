@@ -22,6 +22,7 @@ We support all the default options that NextJS provides by using their `next/bab
 * [CDN](#leverage-assets-using-cdn)
 * [Port](#customize-the-port)
 * [Config](#use-your-own-config)
+* [Polyfills](#use-polyfills)
 * [Tests](#tests)
 
 ## Folder Structure
@@ -208,6 +209,20 @@ You can use your own config or extend ours by creating a `src/client/next.config
 This file should follow the [Next.js documentation](https://github.com/zeit/next.js/#custom-configuration).
 
 Remember to use your own config in your `server.js` too.
+
+## Use polyfills
+
+In case you want to add your own set of polyfills for the client, just create a `polyfills.js` file inside the client folder, and add the ones you want to use. create-next-react-app will automatically pick it for you and put it at the beginning of the bundle. You can use directly [core-js](https://github.com/zloirock/core-js), as Next already uses.
+
+Example:
+
+```javascript
+// src/client/polyfills.js
+
+import 'core-js/fn/object/assign';
+import 'core-js/fn/array/fill';
+import 'core-js/fn/array/from';
+```
 
 ## Tests
 
