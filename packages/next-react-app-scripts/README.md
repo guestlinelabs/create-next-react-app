@@ -212,7 +212,7 @@ Remember to use your own config in your `server.js` too.
 
 ## Use polyfills
 
-In case you want to add your own set of polyfills for the client, just create a `polyfills.js` file inside the client folder, and add the ones you want to use. create-next-react-app will automatically pick it for you and put it at the beginning of the bundle. You can use directly [core-js](https://github.com/zloirock/core-js), as Next already uses.
+In case you want to add your own set of polyfills for the client, just create a `polyfills.js` file inside the client folder, and add the ones you want to use. create-next-react-app will automatically pick it for you and put it at the beginning of the bundle. You can use directly [core-js](https://github.com/zloirock/core-js), as Next already uses it.
 
 Example:
 
