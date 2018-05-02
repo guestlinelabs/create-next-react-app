@@ -18,6 +18,7 @@ module.exports = {
   appSrc: resolveApp('src'),
   appClient: resolveApp('src/client'),
   appServerFile: resolveApp('src/server.js'),
+  polyfills: resolveApp('src/client/polyfills.js'),
 
   build: resolveApp('build')
 };
