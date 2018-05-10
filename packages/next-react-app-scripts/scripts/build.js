@@ -97,7 +97,8 @@ nextBuild(paths.appClient, nextConfig)
           Promise.all([
             mkdirp(publicPath),
             mkdirp(path.join(publicPath, 'page')),
-            mkdirp(path.join(publicPath, 'static'))
+            mkdirp(path.join(publicPath, 'static')),
+            mkdirp(path.join(paths.build, 'public', '_next', 'webpack', 'chunks'))
           ])
         )
         .then(() =>
