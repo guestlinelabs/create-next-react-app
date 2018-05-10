@@ -117,13 +117,13 @@ nextBuild(paths.appClient, nextConfig)
                 destination: path.join(paths.build, 'public', '_next', buildId, 'static')
               },
               {
-                source: path.join(paths.appClient, 'static'),
-                destination: path.join(paths.build, 'public', '_next', buildId, 'static')
-              },
-              {
                 source: path.join(paths.build, 'chunks'),
                 destination: path.join(paths.build, 'public', '_next', 'webpack', 'chunks')
               },
+              {
+                source: path.join(paths.appClient, 'static'),
+                destination: path.join(paths.build, 'public', '_next', buildId, 'static')
+              }
             ].map(({ source, destination }) => {
               return ncp(source, destination);
             })
