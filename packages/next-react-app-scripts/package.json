@@ -10,7 +10,14 @@
   "bugs": {
     "url": "https://github.com/guestlinelabs/create-next-react-app/issues"
   },
-  "files": ["bin", "scripts", "template", "utils", "babel.js", "config.js"],
+  "files": [
+    "bin",
+    "scripts",
+    "template",
+    "utils",
+    "babel.js",
+    "config.js"
+  ],
   "bin": {
     "next-react-app-scripts": "./bin/scripts.js"
   },
