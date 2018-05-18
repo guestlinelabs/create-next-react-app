@@ -1,4 +1,5 @@
 const paths = require('./utils/paths');
+const path = require('path');
 require('dotenv').config({ silent: true, path: paths.dotenv });
 
 const packageJSON = require(paths.packageJSON);
@@ -7,7 +8,6 @@ const templatePackageJSON = require('./template/.template.package.json');
 const { PUBLIC_URL, NEXT_BUILD_ID } = process.env;
 
 process.env.ASSET_PREFIX = '/_next';
-
 if (PUBLIC_URL && NEXT_BUILD_ID) {
   process.env.ASSET_PREFIX = `${PUBLIC_URL}/_next/${NEXT_BUILD_ID}`;
 }
@@ -30,7 +30,7 @@ module.exports = {
       'transform-assets-import-to-string',
       {
         extensions: ['.gif', '.jpeg', '.jpg', '.png', '.svg', '.ttf', '.woff', '.woff2', '.eot'],
-        baseDir: '/static',
+        baseDir: `${path.sep}static`,
         baseUri: process.env.ASSET_PREFIX === '/_next' ? '' : process.env.ASSET_PREFIX
       }
     ],
