@@ -19,6 +19,15 @@ const mkdirp = require('../utils/mkdirp');
 const nextBuild = require('next/dist/server/build').default;
 let nextConfig = require('../config');
 
+function getFileSize(path) {
+  const stats = fs.statSync(path);
+
+  //Size returned in Mb
+  return stats.size / 1000000.0;
+}
+
+const mainFileSizeBeforeBuild = getFileSize(path.join(paths.build, 'main.js')) || 0;
+
 // Lint the whole project
 console.log(chalk.green('Running ESLint on the ', chalk.inverse('./src'), ' folder.'));
 console.log();
@@ -36,20 +45,22 @@ if (process.env.CI === 'true') {
   console.log();
 }
 
-const eslintEngine = new eslint.CLIEngine({ rules: eslintConfig });
+const eslintEngine = new eslint.CLIEngine({
+  rules: eslintConfig
+});
 const eslintResult = eslintEngine.executeOnFiles([paths.appSrc]);
 
-eslintResult.results.forEach(function(result) {
+eslintResult.results.forEach(function (result) {
   if (result.messages.length) {
     console.log(chalk.inverse(result.filePath.replace(paths.appSrc, './src')));
 
-    result.messages.forEach(function(message) {
+    result.messages.forEach(function (message) {
       console.log(
         chalk.bold(`  Line ${message.line}:`),
         message.message,
-        message.severity > 1
-          ? chalk.underline.red(message.ruleId)
-          : chalk.underline.yellow(message.ruleId)
+        message.severity > 1 ?
+        chalk.underline.red(message.ruleId) :
+        chalk.underline.yellow(message.ruleId)
       );
     });
     console.log();
@@ -103,8 +114,7 @@ nextBuild(paths.appClient, nextConfig)
         )
         .then(() =>
           Promise.all(
-            [
-              {
+            [{
                 source: path.join(paths.build, 'main.js'),
                 destination: path.join(paths.build, 'public', '_next', buildId, 'main.js')
               },
@@ -124,7 +134,10 @@ nextBuild(paths.appClient, nextConfig)
                 source: path.join(paths.appClient, 'static'),
                 destination: path.join(paths.build, 'public', '_next', buildId, 'static')
               }
-            ].map(({ source, destination }) => {
+            ].map(({
+              source,
+              destination
+            }) => {
               return ncp(source, destination);
             })
           )
@@ -132,8 +145,12 @@ nextBuild(paths.appClient, nextConfig)
     }
   })
   .then(() => {
-    console.log(chalk.green(`Built in: ${((Date.now() - startTime) / 1000).toFixed(2)}s.`));
+    const mainFileDifference = (getFileSize(path.join(paths.build, 'main.js')) - mainFileSizeBeforeBuild).toFixed(5);
+    const messageColor = mainFileDifference > 0 ? 'red' : 'green';
+
+    console.log(chalk[messageColor](`Size Difference of Main file: ${mainFileDifference} Mb.`));
     console.log();
+    console.log(chalk.green(`Built in: ${((Date.now() - startTime) / 1000).toFixed(2)}s.`));
   })
   .catch(err => {
     console.error(err);
