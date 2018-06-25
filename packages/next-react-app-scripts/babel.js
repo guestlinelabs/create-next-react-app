@@ -1,11 +1,17 @@
 const paths = require('./utils/paths');
 const path = require('path');
-require('dotenv').config({ silent: true, path: paths.dotenv });
+require('dotenv').config({
+  silent: true,
+  path: paths.dotenv
+});
 
 const packageJSON = require(paths.packageJSON);
 const templatePackageJSON = require('./template/.template.package.json');
 
-const { PUBLIC_URL, NEXT_BUILD_ID } = process.env;
+const {
+  PUBLIC_URL,
+  NEXT_BUILD_ID
+} = process.env;
 
 process.env.ASSET_PREFIX = '/_next';
 if (PUBLIC_URL && NEXT_BUILD_ID) {
@@ -20,20 +26,25 @@ const envVars = Object.keys(process.env)
   }, {});
 envVars['process.env.ASSET_PREFIX'] = process.env.ASSET_PREFIX;
 
-module.exports = {
-  presets: [
-    ['env', { targets: packageJSON.targets || templatePackageJSON.targets }],
-    ['next/babel']
-  ],
-  plugins: [
-    [
-      'transform-assets-import-to-string',
-      {
-        extensions: ['.gif', '.jpeg', '.jpg', '.png', '.svg', '.ttf', '.woff', '.woff2', '.eot'],
-        baseDir: `${path.sep}static`,
-        baseUri: process.env.ASSET_PREFIX === '/_next' ? '' : process.env.ASSET_PREFIX
-      }
+module.exports = function () {
+  return {
+    presets: [
+      ['next/babel', {
+        'preset-env': {
+          targets: packageJSON.targets || templatePackageJSON.targets
+        }
+      }]
     ],
-    ['transform-define', envVars]
-  ]
+    plugins: [
+      [
+        'transform-assets-import-to-string',
+        {
+          extensions: ['.gif', '.jpeg', '.jpg', '.png', '.svg', '.ttf', '.woff', '.woff2', '.eot'],
+          baseDir: `${path.sep}static`,
+          baseUri: process.env.ASSET_PREFIX === '/_next' ? '' : process.env.ASSET_PREFIX
+        }
+      ],
+      ['transform-define', envVars]
+    ]
+  }
 };
