@@ -26,23 +26,25 @@ const envVars = Object.keys(process.env)
   }, {});
 envVars['process.env.ASSET_PREFIX'] = process.env.ASSET_PREFIX;
 
-module.exports = {
-  presets: [
-    ['next/babel', {
-      'preset-env': {
-        targets: packageJSON.targets || templatePackageJSON.targets
-      }
-    }]
-  ]
-  // plugins: [
-  //   [
-  //     'transform-assets-import-to-string',
-  //     {
-  //       extensions: ['.gif', '.jpeg', '.jpg', '.png', '.svg', '.ttf', '.woff', '.woff2', '.eot'],
-  //       baseDir: `${path.sep}static`,
-  //       baseUri: process.env.ASSET_PREFIX === '/_next' ? '' : process.env.ASSET_PREFIX
-  //     }
-  //   ],
-  //   ['transform-define', envVars]
-  // ]
+module.exports = function () {
+  return {
+    presets: [
+      ['next/babel', {
+        'preset-env': {
+          targets: packageJSON.targets || templatePackageJSON.targets
+        }
+      }]
+    ],
+    plugins: [
+      [
+        'transform-assets-import-to-string',
+        {
+          extensions: ['.gif', '.jpeg', '.jpg', '.png', '.svg', '.ttf', '.woff', '.woff2', '.eot'],
+          baseDir: `${path.sep}static`,
+          baseUri: process.env.ASSET_PREFIX === '/_next' ? '' : process.env.ASSET_PREFIX
+        }
+      ],
+      ['transform-define', envVars]
+    ]
+  }
 };
