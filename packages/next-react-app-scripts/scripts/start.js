@@ -26,4 +26,6 @@ if (process.env.NODE_ENV === 'development') {
   }, 4000);
 }
 
-spawn('node', [paths.appServerFile], { stdio: 'inherit' });
+spawn('node', [paths.appServerFile], {
+  stdio: 'inherit'
+});
