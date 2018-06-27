@@ -93,42 +93,49 @@ nextBuild(paths.appClient, nextConfig)
       const publicPath = path.join(paths.build, 'public', '_next', buildId);
 
       return Promise.resolve()
-        .then(() =>
-          Promise.all([
+        .then(() => {
+          return Promise.all([
             mkdirp(publicPath),
             mkdirp(path.join(publicPath, 'page')),
             mkdirp(path.join(publicPath, 'static')),
+            mkdirp(path.join(paths.build, 'public', '_next', 'static', 'commons')),
             mkdirp(path.join(paths.build, 'public', '_next', 'webpack', 'chunks'))
           ])
-        )
-        .then(() =>
-          Promise.all(
-            [
-              {
-                source: path.join(paths.build, 'main.js'),
-                destination: path.join(paths.build, 'public', '_next', buildId, 'main.js')
-              },
-              {
-                source: path.join(paths.build, 'bundles', 'pages'),
-                destination: path.join(paths.build, 'public', '_next', buildId, 'page')
-              },
-              {
-                source: path.join(paths.build, 'static'),
-                destination: path.join(paths.build, 'public', '_next', buildId, 'static')
-              },
-              {
-                source: path.join(paths.build, 'chunks'),
-                destination: path.join(paths.build, 'public', '_next', 'webpack', 'chunks')
-              },
-              {
-                source: path.join(paths.appClient, 'static'),
-                destination: path.join(paths.build, 'public', '_next', buildId, 'static')
-              }
-            ].map(({ source, destination }) => {
+        })
+        .then(() => {
+          const filesToCopy = [
+            {
+              source: path.join(paths.build, 'static', 'commons'),
+              destination: path.join(paths.build, 'public', '_next', 'static', 'commons')
+            },
+            {
+              source: path.join(paths.build, 'bundles', 'pages'),
+              destination: path.join(paths.build, 'public', '_next', buildId, 'page')
+            },
+            {
+              source: path.join(paths.build, 'static'),
+              destination: path.join(paths.build, 'public', '_next', buildId, 'static')
+            },
+            {
+              source: path.join(paths.appClient, 'static'),
+              destination: path.join(paths.build, 'public', '_next', buildId, 'static')
+            }
+          ];
+
+          const chunksFolder = path.join(paths.build, 'chunks')
+          if (fs.existsSync(chunksFolder)) {
+            filesToCopy.push({
+              source: chunksFolder,
+              destination: path.join(paths.build, 'public', '_next', 'webpack', 'chunks')
+            })
+          }
+
+          return Promise.all(
+            filesToCopy.map(({ source, destination }) => {
               return ncp(source, destination);
             })
           )
-        );
+        });
     }
   })
   .then(() => {
@@ -136,5 +143,14 @@ nextBuild(paths.appClient, nextConfig)
     console.log();
   })
   .catch(err => {
-    console.error(err);
+    if (Array.isArray(err)) {
+      err.forEach(err => {
+        console.log(chalk.red(err));
+      })
+    } else {
+      console.log(chalk.red(err));
+    }
+    
+    console.log();
+    process.exit(1);
   });

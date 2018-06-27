@@ -10,6 +10,9 @@
     "prettier-config-guestline": "^1.0.0"
   },
   "lint-staged": {
-    "{packages}/**/*.{js,jsx,json,ts,css,scss,sass,less,md}": ["prettier --write", "git add"]
+    "{packages}/**/*.{js,jsx,json,ts,css,scss,sass,less,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
