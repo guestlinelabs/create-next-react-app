@@ -16,7 +16,7 @@ const ncp = require('../utils/ncp');
 const paths = require('../utils/paths');
 const mkdirp = require('../utils/mkdirp');
 
-const nextBuild = require('next/dist/server/build').default;
+const nextBuild = require('next/dist/build').default;
 let nextConfig = require('../config');
 
 // Lint the whole project
@@ -100,7 +100,7 @@ nextBuild(paths.appClient, nextConfig)
             mkdirp(path.join(publicPath, 'static')),
             mkdirp(path.join(paths.build, 'public', '_next', 'static', 'commons')),
             mkdirp(path.join(paths.build, 'public', '_next', 'webpack', 'chunks'))
-          ])
+          ]);
         })
         .then(() => {
           const filesToCopy = [
@@ -122,19 +122,19 @@ nextBuild(paths.appClient, nextConfig)
             }
           ];
 
-          const chunksFolder = path.join(paths.build, 'chunks')
+          const chunksFolder = path.join(paths.build, 'chunks');
           if (fs.existsSync(chunksFolder)) {
             filesToCopy.push({
               source: chunksFolder,
               destination: path.join(paths.build, 'public', '_next', 'webpack', 'chunks')
-            })
+            });
           }
 
           return Promise.all(
             filesToCopy.map(({ source, destination }) => {
               return ncp(source, destination);
             })
-          )
+          );
         });
     }
   })
@@ -146,11 +146,11 @@ nextBuild(paths.appClient, nextConfig)
     if (Array.isArray(err)) {
       err.forEach(err => {
         console.log(chalk.red(err));
-      })
+      });
     } else {
       console.log(chalk.red(err));
     }
-    
+
     console.log();
     process.exit(1);
   });
