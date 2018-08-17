@@ -3,11 +3,13 @@
 #### :boom: Breaking Change
 
 * `next-react-app-scripts`
+
   * [#15](https://github.com/guestlinelabs/create-next-react-app/pull/15) Remove moment locales from the Webpack build (like [CRA does](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#momentjs-locales-are-missing)).
 
 #### :nail_care: Enhancement
 
 * `next-react-app-scripts`
+
   * [#15](https://github.com/guestlinelabs/create-next-react-app/pull/15) Generate HTML stats report for both the client and the server on the build folder.
 
 ## 2.0.4 (August 9, 2018)
@@ -23,6 +25,7 @@
 #### :house: Internal
 
 * `next-react-app-scripts`
+
   * [#13](https://github.com/guestlinelabs/create-next-react-app/pull/13) Updated Next.js from 6.0.3 to 6.1.1
 
 ## 2.0.2 (June 27, 2018)
@@ -38,6 +41,7 @@
 #### :house: Internal
 
 * `next-react-app-scripts`
+
   * [#11](hhttps://github.com/guestlinelabs/create-next-react-app/pull/11) Updated @zeit/next-css from 0.1.5 to 0.2.0
 
 ## 2.0.0 (June 25, 2018)
@@ -45,6 +49,7 @@
 #### :boom: Breaking Change
 
 * `next-react-app-scripts`
+
   * [#10](https://github.com/guestlinelabs/create-next-react-app/pull/10) Upgrade Next.js from version 5 to 6.
 
 ## 1.0.8 (May 18, 2018)
@@ -82,6 +87,7 @@
 #### :nail_care: Enhancement
 
 * `next-react-app-scripts`
+
   * [#5](https://github.com/guestlinelabs/create-next-react-app/pull/5) Add the posibility of using more polyfills by creating a polyfills.js file inside your src folder.
 
 ## 1.0.3 (Apr 26, 2018)
@@ -89,6 +95,7 @@
 #### :house: Internal
 
 * `next-react-app-scripts`
+
   * [#4](hhttps://github.com/guestlinelabs/create-next-react-app/pull/4) Add an array of valid extensions for the assets generation.
 
 ## 1.0.1 (Apr 14, 2018)
@@ -96,6 +103,7 @@
 #### :house: Internal
 
 * `next-react-app-scripts`
+
   * [#2](hhttps://github.com/guestlinelabs/create-next-react-app/pull/2) Some code cleanup.
 
 ## 1.0.0 (Apr 13, 2018)
