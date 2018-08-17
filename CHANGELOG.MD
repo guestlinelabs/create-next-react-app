@@ -23,7 +23,7 @@
 #### :house: Internal
 
 * `next-react-app-scripts`
-  * [#13](hhttps://github.com/guestlinelabs/create-next-react-app/pull/13) Updated Next.js from 6.0.3 to 6.1.1
+  * [#13](https://github.com/guestlinelabs/create-next-react-app/pull/13) Updated Next.js from 6.0.3 to 6.1.1
 
 ## 2.0.2 (June 27, 2018)
 
