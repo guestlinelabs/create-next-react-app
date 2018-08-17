@@ -42,7 +42,7 @@
 
 * `next-react-app-scripts`
 
-  * [#11](hhttps://github.com/guestlinelabs/create-next-react-app/pull/11) Updated @zeit/next-css from 0.1.5 to 0.2.0
+  * [#11](https://github.com/guestlinelabs/create-next-react-app/pull/11) Updated @zeit/next-css from 0.1.5 to 0.2.0
 
 ## 2.0.0 (June 25, 2018)
 
@@ -96,7 +96,7 @@
 
 * `next-react-app-scripts`
 
-  * [#4](hhttps://github.com/guestlinelabs/create-next-react-app/pull/4) Add an array of valid extensions for the assets generation.
+  * [#4](https://github.com/guestlinelabs/create-next-react-app/pull/4) Add an array of valid extensions for the assets generation.
 
 ## 1.0.1 (Apr 14, 2018)
 
@@ -104,7 +104,7 @@
 
 * `next-react-app-scripts`
 
-  * [#2](hhttps://github.com/guestlinelabs/create-next-react-app/pull/2) Some code cleanup.
+  * [#2](https://github.com/guestlinelabs/create-next-react-app/pull/2) Some code cleanup.
 
 ## 1.0.0 (Apr 13, 2018)
 
