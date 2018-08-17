@@ -9,16 +9,27 @@ const packageJSON = require(paths.packageJSON);
 module.exports = withCSS({
   distDir: path.join('..', '..', 'build'),
   assetPrefix: process.env.PUBLIC_URL || '',
-  generateBuildId: async () => {
+  generateBuildId() {
     process.env.NEXT_BUILD_ID = Date.now();
 
-    return process.env.NEXT_BUILD_ID;
+    return Promise.resolve(process.env.NEXT_BUILD_ID);
   },
-  webpack: function (config, options) {
+  webpack(config, options) {
     if (packageJSON.name) {
       config.output.jsonpFunction =
         'webpackJsonp' + camelCase(packageJSON.name, { pascalCase: true });
     }
+
+    config.plugins.push(
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        analyzerPort: options.isServer ? 8888 : 8889,
+        openAnalyzer: false,
+        reportFilename: `report-${options.isServer ? 'server' : 'client'}.html`,
+        logLevel: 'error'
+      })
+    );
 
     const originalEntry = config.entry;
     config.entry = () => {
