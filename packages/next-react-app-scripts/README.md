@@ -24,6 +24,7 @@ We support all the default options that NextJS provides by using their `next/bab
 * [Config](#use-your-own-config)
 * [Polyfills](#use-polyfills)
 * [Tests](#tests)
+* [Moment.js locales](#momentjs-locales)
 
 ## Folder Structure
 
@@ -227,3 +228,29 @@ import 'core-js/fn/array/from';
 ## Tests
 
 By default the `test` command is using [`jest-run`](https://github.com/guestlinelabs/jest-run). Refer to its documentation to see how to work with it.
+
+## Moment.js locales
+
+If you use a [Moment.js](https://momentjs.com/), you might notice that only the English locale is available by default. This is because the locale files are large, and you probably only need a subset of [all the locales provided by Moment.js](https://momentjs.com/#multiple-locale-support).
+
+To add a specific Moment.js locale to your bundle, you need to import it explicitly.<br>
+For example:
+
+```js
+import moment from 'moment';
+import 'moment/locale/fr';
+```
+
+If import multiple locales this way, you can later switch between them by calling `moment.locale()` with the locale name:
+
+```js
+import moment from 'moment';
+import 'moment/locale/fr';
+import 'moment/locale/es';
+
+// ...
+
+moment.locale('fr');
+```
+
+This will only work for locales that have been explicitly imported before.
