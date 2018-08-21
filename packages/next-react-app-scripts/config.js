@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const withCSS = require('@zeit/next-css');
 const camelCase = require('camelcase');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const paths = require('./utils/paths');
 const packageJSON = require(paths.packageJSON);
