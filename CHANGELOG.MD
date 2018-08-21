@@ -1,3 +1,11 @@
+## 3.0.1 (August 21, 2018)
+
+#### :bug: Bug Fix
+
+* `next-react-app-scripts`
+
+  * [#16](https://github.com/guestlinelabs/create-next-react-app/pull/16) Fix missing BundleAnalyzer in the modules.
+
 ## 3.0.0 (August 17, 2018)
 
 #### :boom: Breaking Change
