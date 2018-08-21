@@ -1,3 +1,11 @@
+## 3.0.2 (August 21, 2018)
+
+#### :bug: Bug Fix
+
+* `next-react-app-scripts`
+
+  * [#17](https://github.com/guestlinelabs/create-next-react-app/pull/17) Fix missing webpack import in the config for adding plugins.
+
 ## 3.0.1 (August 21, 2018)
 
 #### :bug: Bug Fix
