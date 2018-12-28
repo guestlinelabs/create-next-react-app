@@ -14,5 +14,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "eslint-config-next-react-app": "^1.1.0"
   }
 }
